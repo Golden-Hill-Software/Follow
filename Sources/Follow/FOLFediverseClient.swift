@@ -1,0 +1,16 @@
+//
+//  FOLFediverseClient.swift
+//
+//
+//  Created by John Brayton on 2/2/24.
+//
+
+import Foundation
+
+protocol FOLFediverseClient {
+    
+    var name: String { get }
+    
+    func localURL( forFediverseProfile fediverseProfile: FOLFediverseProfile ) -> URL?
+    
+}
