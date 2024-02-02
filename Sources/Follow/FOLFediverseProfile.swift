@@ -7,9 +7,14 @@
 
 import Foundation
 
-struct FOLFediverseProfile {
+public struct FOLFediverseProfile {
     
     let username: String
     let host: String
+    
+    public init( username: String, host: String ) {
+        self.username = username
+        self.host = host
+    }
     
 }

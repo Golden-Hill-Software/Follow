@@ -13,7 +13,7 @@ import AppKit
 @objc
 public class FOLFollow : NSObject {
     
-    static var fediverseProfile: FOLFediverseProfile? = nil
+    public static var fediverseProfile: FOLFediverseProfile? = nil
     
     /*
         This does nothing, but its existence lets validateMenuItem(_:) get called (in FOLFollow+NSMenuItemValidation).
