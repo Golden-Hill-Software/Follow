@@ -46,10 +46,12 @@ public class FOLFollow : NSObject {
                 switch action {
                 case .copy( let string ):
                     let menuItem = NSMenuItem(title: name, action: #selector(handleGeneratedMenuItem(_:)), keyEquivalent: "")
+                    menuItem.target = self
                     menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: String(format: "copy:%@", string))
                     menuItems.append(menuItem)
                 case .open( let url ):
                     let menuItem = NSMenuItem(title: name, action: #selector(handleGeneratedMenuItem(_:)), keyEquivalent: "")
+                    menuItem.target = self
                     menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: String(format: "open:%@", url.absoluteString))
                     menuItems.append(menuItem)
                 }
