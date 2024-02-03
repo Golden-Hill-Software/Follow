@@ -8,12 +8,14 @@
 import Foundation
 #if os(macOS)
 import AppKit
+#endif
 
 @objc
 public class FOLFollow : NSObject {
     
     public static var fediverseProfile: FOLFediverseProfile? = nil
     
+#if os(macOS)
     /*
         This does nothing, but its existence lets validateMenuItem(_:) get called (in FOLFollow+NSMenuItemValidation).
         That populates the submenu.
@@ -69,5 +71,5 @@ public class FOLFollow : NSObject {
         return menu
     }
     
-}
 #endif
+}

@@ -5,7 +5,7 @@
 //  Created by John Brayton on 2/2/24.
 //
 
-#if(mac)
+#if os(macOS)
 import AppKit
 
 extension FOLFollow : NSMenuItemValidation {
