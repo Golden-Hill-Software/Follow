@@ -5,6 +5,7 @@
 //  Created by John Brayton on 2/2/24.
 //
 
+#if canImport(AppKit)
 import AppKit
 
 extension NSImage {
@@ -34,3 +35,4 @@ extension NSImage {
 
     
 }
+#endif

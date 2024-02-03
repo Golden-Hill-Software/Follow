@@ -8,7 +8,6 @@
 import Foundation
 #if os(macOS)
 import AppKit
-#endif
 
 @objc
 public class FOLFollow : NSObject {
@@ -71,3 +70,4 @@ public class FOLFollow : NSObject {
     }
     
 }
+#endif

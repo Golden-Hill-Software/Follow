@@ -22,7 +22,11 @@ extension URL {
             return FOLURLAvailability.cannotOpen
         }
 #else
-        return UIApplication.shared.canOpenURL(self)
+        if UIApplication.shared.canOpenURL(self) {
+            return FOLURLAvailability.canOpen(applicationPath: nil)
+        } else {
+            return FOLURLAvailability.cannotOpen
+        }
 #endif
     }
     
