@@ -16,7 +16,4 @@ struct FOLIceCubes : FOLFediverseClient {
         return URL(string: string)
     }
     
-    
-    
-    
 }

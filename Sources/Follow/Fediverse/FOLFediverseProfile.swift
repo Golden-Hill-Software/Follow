@@ -9,8 +9,8 @@ import Foundation
 
 public struct FOLFediverseProfile {
     
-    let username: String
-    let host: String
+    public let username: String
+    public let host: String
     
     public init( username: String, host: String ) {
         self.username = username
