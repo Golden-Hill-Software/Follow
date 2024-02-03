@@ -14,9 +14,13 @@ import UIKit
 
 extension URL {
     
-    var FOL_canOpen: Bool {
+    var FOL_canOpen: FOLURLAvailability {
 #if os(macOS)
-        return NSWorkspace.shared.urlForApplication(toOpen: self) != nil
+        if let url = NSWorkspace.shared.urlForApplication(toOpen: self) {
+            return FOLURLAvailability.canOpen(applicationPath: url.path(percentEncoded: false))
+        } else {
+            return FOLURLAvailability.cannotOpen
+        }
 #else
         return UIApplication.shared.canOpenURL(self)
 #endif

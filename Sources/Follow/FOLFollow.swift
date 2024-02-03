@@ -31,7 +31,7 @@ public class FOLFollow : NSObject {
             case .copy(let string):
                 NSPasteboard.general.clearContents()
                 NSPasteboard.general.setString(string, forType: .string)
-            case .open(let url):
+            case .open(let url, _):
                 NSWorkspace.shared.open(url)
             }
         }
@@ -49,10 +49,15 @@ public class FOLFollow : NSObject {
                     menuItem.target = self
                     menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: String(format: "copy:%@", string))
                     menuItems.append(menuItem)
-                case .open( let url ):
+                case .open( let url, let applicationPath ):
                     let menuItem = NSMenuItem(title: name, action: #selector(handleGeneratedMenuItem(_:)), keyEquivalent: "")
                     menuItem.target = self
                     menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: String(format: "open:%@", url.absoluteString))
+                    if let applicationPath {
+                        let dimensionSize = 16.0
+                        let image = NSWorkspace.shared.icon(forFile: applicationPath).FOL_resized(to: NSSize(width: dimensionSize, height: dimensionSize))
+                        menuItem.image = image
+                    }
                     menuItems.append(menuItem)
                 }
             case .separator:

@@ -30,15 +30,20 @@ class FOLFediverseClientUtilities {
         let webURL = webURL(forFediverseProfile: fediverseProfile)
         let handle = handle(forFediverseProfile: fediverseProfile)
         
-        result.append(FOLOption.action(name: String.localizedStringWithFormat("View on Web"), action: .open(url: webURL)))
+        result.append(FOLOption.action(name: String.localizedStringWithFormat("View on Web"), action: .open(url: webURL, applicationPath: nil)))
         result.append(.separator)
         
         var installedClientOptions = [FOLOption]()
         for client in sortedFediverseClients {
-            if let url = client.localURL(forFediverseProfile: fediverseProfile), url.FOL_canOpen {
-                let action = FOLAction.open(url: url)
-                let option = FOLOption.action(name: String.localizedStringWithFormat("Open in %@", client.name), action: action)
-                installedClientOptions.append(option)
+            if let url = client.localURL(forFediverseProfile: fediverseProfile) {
+                switch url.FOL_canOpen {
+                case .canOpen( let applicationPath ):
+                    let action = FOLAction.open(url: url, applicationPath: applicationPath)
+                    let option = FOLOption.action(name: String.localizedStringWithFormat("Open in %@", client.name), action: action)
+                    installedClientOptions.append(option)
+                case .cannotOpen:
+                    break
+                }
             }
         }
         if !installedClientOptions.isEmpty {
