@@ -14,14 +14,23 @@ import AppKit
 public class FOLFollow : NSObject {
     
     public static var fediverseProfile: FOLFediverseProfile? = nil
-    
+    public static var feedProfile: FOLFeedProfile? = nil
+
 #if os(macOS)
     /*
         This does nothing, but its existence lets validateMenuItem(_:) get called (in FOLFollow+NSMenuItemValidation).
         That populates the submenu.
      */
     @IBAction
-    public func handleFollowOnFediverse( _ input: Any ) {
+    public func handleFediverseMenuItem( _ input: Any ) {
+        
+    }
+    
+    /*
+        Similarly this does nothing, but it lets validateMenuItem(_:) get called in FOLFollow+NSMenuItemValidation.
+        That does the right thing.
+     */
+    @IBAction func handleFeedMenuItem( _ input: Any ) {
         
     }
     

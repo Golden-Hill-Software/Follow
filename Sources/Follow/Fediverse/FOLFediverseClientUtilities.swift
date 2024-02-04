@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FOLFediverseClientUtilities {
+struct FOLFediverseClientUtilities {
     
     static let sortedFediverseClients: [FOLFediverseClient] = [
         FOLIceCubes(),
