@@ -16,7 +16,4 @@ struct FOLFieryFeeds : FOLFeedReader {
         return URL(string: string)
     }
     
-    
-    
-    
 }
