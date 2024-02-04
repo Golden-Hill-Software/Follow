@@ -12,15 +12,11 @@ struct FOLUnread : FOLFeedReader {
     let name = String.localizedStringWithFormat("Unread")
 
     func localURL(forFeedProfile feedProfile: FOLFeedProfile) -> URL? {
-        guard var urlComponents = URLComponents(url: feedProfile.feedURL, resolvingAgainstBaseURL: false) else {
-            return nil
-        }
-        let scheme = urlComponents.scheme?.lowercased()
-        if scheme == "https" {
-            urlComponents.scheme = "unread-feed-https"
-        } else if scheme == "http" {
-            urlComponents.scheme = "unread-feed-http"
-        }
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "unread"
+        urlComponents.host = ""
+        urlComponents.path = "/feeds"
+        urlComponents.queryItems = [URLQueryItem(name: "url", value: feedProfile.feedURL.absoluteString)]
         return urlComponents.url
     }
 
