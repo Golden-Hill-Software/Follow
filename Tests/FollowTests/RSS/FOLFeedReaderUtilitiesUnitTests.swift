@@ -17,4 +17,15 @@ class FOLFeedReaderUtilitiesUnitTests : XCTestCase {
         }
     }
     
+    // Ensure that Apple App IDs are unique. (This does not ensure they are correct, but
+    // could help prevent some mistakes.)
+    func testUniqueAppIds() {
+        let sortedFeedReaders = FOLFeedReaderUtilities.sortedFediverseClients
+        var appleAppIds = Set<Int>()
+        for i in 0..<sortedFeedReaders.count {
+            XCTAssert(!appleAppIds.contains(sortedFeedReaders[i].appleAppId))
+            appleAppIds.insert(sortedFeedReaders[i].appleAppId)
+        }
+    }
+    
 }

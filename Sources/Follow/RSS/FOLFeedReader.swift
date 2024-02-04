@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol FOLFeedReader {
-    
-    var name: String { get }
+protocol FOLFeedReader : FOLApp {
     
     func localURL( forFeedProfile feedProfile: FOLFeedProfile ) -> URL?
         

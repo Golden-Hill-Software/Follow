@@ -10,6 +10,8 @@ import Foundation
 struct FOLNetNewsWire : FOLFeedReader {
     
     let name = String.localizedStringWithFormat("NetNewsWire")
+    
+    let appleAppId = 1480640210
 
     func localURL(forFeedProfile feedProfile: FOLFeedProfile) -> URL? {
         guard var urlComponents = URLComponents(url: feedProfile.feedURL, resolvingAgainstBaseURL: false) else {

@@ -22,6 +22,18 @@ final class FOLFediverseClientUtilitiesUnitTests: XCTestCase {
         }
     }
     
+    
+    // Ensure that Apple App IDs are unique. (This does not ensure they are correct, but
+    // could help prevent some mistakes.)
+    func testUniqueAppIds() {
+        let sortedFediverseClients = FOLFediverseClientUtilities.sortedFediverseClients
+        var appleAppIds = Set<Int>()
+        for i in 0..<sortedFediverseClients.count {
+            XCTAssert(!appleAppIds.contains(sortedFediverseClients[i].appleAppId))
+            appleAppIds.insert(sortedFediverseClients[i].appleAppId)
+        }
+    }
+
     func testWebURL() {
         let fediverseProfile = FOLFediverseProfile(username: "unread", host: "mastodon.goldenhillsoftware.com")
         XCTAssertEqual(FOLFediverseClientUtilities.webURL(forFediverseProfile: fediverseProfile).absoluteString, "https://mastodon.goldenhillsoftware.com/@unread")

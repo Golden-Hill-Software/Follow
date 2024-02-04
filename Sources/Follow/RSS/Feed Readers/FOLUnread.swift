@@ -11,6 +11,8 @@ struct FOLUnread : FOLFeedReader {
 
     let name = String.localizedStringWithFormat("Unread")
 
+    let appleAppId = 1363637349
+    
     func localURL(forFeedProfile feedProfile: FOLFeedProfile) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = "unread"

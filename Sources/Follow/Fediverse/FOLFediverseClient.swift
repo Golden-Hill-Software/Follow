@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol FOLFediverseClient {
-    
-    var name: String { get }
+protocol FOLFediverseClient : FOLApp {
     
     func localURL( forFediverseProfile fediverseProfile: FOLFediverseProfile ) -> URL?
     
