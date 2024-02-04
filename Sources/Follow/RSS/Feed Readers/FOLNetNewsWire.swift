@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FOLNetNewsWire {
+struct FOLNetNewsWire : FOLFeedReader {
     
     let name = String.localizedStringWithFormat("NetNewsWire")
 

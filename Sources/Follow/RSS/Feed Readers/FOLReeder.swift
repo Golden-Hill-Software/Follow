@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FOLReeder {
+struct FOLReeder : FOLFeedReader {
     
     let name = String.localizedStringWithFormat("Reeder")
 
