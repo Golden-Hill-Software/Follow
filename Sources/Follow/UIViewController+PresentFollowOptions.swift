@@ -17,8 +17,20 @@ extension UIViewController {
             print("FOLFollow.fediverseProfile is not set.")
             return
         }
-        #warning("this is slow on iPhone. see what I can do about this.")
         let options = FOLFediverseClientUtilities.options(forFediverseProfile: fediverseProfile)
+        self.present(options: options, fromSourceView: sourceView, rect: rect)
+    }
+    
+    public func FOL_handleBlog( fromSourceView sourceView: UIView, rect: CGRect ) {
+        guard let feedProfile = FOLFollow.feedProfile else {
+            print("FOLFollow.feedProfile is not set.")
+            return
+        }
+        let options = FOLFeedReaderUtilities.options(forFeedProfile: feedProfile)
+        self.present(options: options, fromSourceView: sourceView, rect: rect)
+    }
+    
+    private func present( options: [FOLOption], fromSourceView sourceView: UIView, rect: CGRect ) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for option in options {
             switch option {
