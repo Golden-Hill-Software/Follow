@@ -41,7 +41,7 @@ public class FOLFollow : NSObject {
             case .copy(let string):
                 NSPasteboard.general.clearContents()
                 NSPasteboard.general.setString(string, forType: .string)
-            case .open(let url, _):
+            case .open(let url):
                 NSWorkspace.shared.open(url)
             }
         }
@@ -52,21 +52,28 @@ public class FOLFollow : NSObject {
         
         for option in options {
             switch option {
-            case .action( let name, let action ):
+            case .action( let name, let action, let image ):
                 switch action {
                 case .copy( let string ):
                     let menuItem = NSMenuItem(title: name, action: #selector(handleGeneratedMenuItem(_:)), keyEquivalent: "")
                     menuItem.target = self
                     menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: String(format: "copy:%@", string))
                     menuItems.append(menuItem)
-                case .open( let url, let applicationPath ):
+                case .open( let url ):
                     let menuItem = NSMenuItem(title: name, action: #selector(handleGeneratedMenuItem(_:)), keyEquivalent: "")
                     menuItem.target = self
                     menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: String(format: "open:%@", url.absoluteString))
-                    if let applicationPath {
-                        let dimensionSize = 16.0
-                        let image = NSWorkspace.shared.icon(forFile: applicationPath).FOL_resized(to: NSSize(width: dimensionSize, height: dimensionSize))
-                        menuItem.image = image
+                    switch image {
+                    case .applicationIcon( let applicationPath, _ ):
+                        if let applicationPath {
+                            let dimensionSize = 16.0
+                            let image = NSWorkspace.shared.icon(forFile: applicationPath).FOL_resized(to: NSSize(width: dimensionSize, height: dimensionSize))
+                            menuItem.image = image
+                        }
+                    case .copy:
+                        break
+                    case .web:
+                        break
                     }
                     menuItems.append(menuItem)
                 }

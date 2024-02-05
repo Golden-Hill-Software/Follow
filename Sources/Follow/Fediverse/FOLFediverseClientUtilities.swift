@@ -29,8 +29,8 @@ struct FOLFediverseClientUtilities {
         
         let webURL = webURL(forFediverseProfile: fediverseProfile)
         let handle = handle(forFediverseProfile: fediverseProfile)
-        
-        result.append(FOLOption.action(name: String.localizedStringWithFormat("View on Web"), action: .open(url: webURL, applicationPath: nil)))
+  
+        result.append(FOLOption.action(name: String.localizedStringWithFormat("View on Web"), action: .open(url: webURL), icon: .web))
         result.append(.separator)
         
         var installedClientOptions = [FOLOption]()
@@ -38,8 +38,8 @@ struct FOLFediverseClientUtilities {
             if let url = client.localURL(forFediverseProfile: fediverseProfile) {
                 switch url.FOL_canOpen {
                 case .canOpen( let applicationPath ):
-                    let action = FOLAction.open(url: url, applicationPath: applicationPath)
-                    let option = FOLOption.action(name: String.localizedStringWithFormat("Open in %@", client.name), action: action)
+                    let action = FOLAction.open(url: url)
+                    let option = FOLOption.action(name: String.localizedStringWithFormat("Open in %@", client.name), action: action, icon: .applicationIcon(applicationPath: applicationPath, bundleIconName: client.name))
                     installedClientOptions.append(option)
                 case .cannotOpen:
                     break
@@ -51,8 +51,8 @@ struct FOLFediverseClientUtilities {
             result.append(.separator)
         }
         
-        result.append(FOLOption.action(name: String.localizedStringWithFormat("Copy Link"), action: .copy(string: webURL.absoluteString)))
-        result.append(FOLOption.action(name: String.localizedStringWithFormat("Copy Handle"), action: .copy(string: handle)))
+        result.append(FOLOption.action(name: String.localizedStringWithFormat("Copy Link"), action: .copy(string: webURL.absoluteString), icon: .copy))
+        result.append(FOLOption.action(name: String.localizedStringWithFormat("Copy Handle"), action: .copy(string: handle), icon: .copy))
 
         return result
     }

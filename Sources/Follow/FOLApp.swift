@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol FOLApp {
+public protocol FOLApp {
     
     var name: String { get }
     

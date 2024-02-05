@@ -9,7 +9,7 @@ import Foundation
 
 enum FOLOption {
     
-    case action( name: String, action: FOLAction )
+    case action( name: String, action: FOLAction, icon: FOLOptionIcon )
     case separator
     
 }

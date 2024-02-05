@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FOLFeedReaderUtilities {
+public struct FOLFeedReaderUtilities {
     
     static let sortedFediverseClients: [FOLFeedReader] = [
         FOLFieryFeeds(),
@@ -19,7 +19,7 @@ struct FOLFeedReaderUtilities {
     static func options( forFeedProfile feedProfile: FOLFeedProfile ) -> [FOLOption] {
         var result = [FOLOption]()
         
-        result.append(FOLOption.action(name: String.localizedStringWithFormat("View on Web"), action: .open(url: feedProfile.websiteURL, applicationPath: nil)))
+        result.append(FOLOption.action(name: String.localizedStringWithFormat("View on Web"), action: .open(url: feedProfile.websiteURL), icon: .web))
         result.append(.separator)
         
         var installedClientOptions = [FOLOption]()
@@ -27,8 +27,8 @@ struct FOLFeedReaderUtilities {
             if let url = client.localURL(forFeedProfile: feedProfile) {
                 switch url.FOL_canOpen {
                 case .canOpen( let applicationPath ):
-                    let action = FOLAction.open(url: url, applicationPath: applicationPath)
-                    let option = FOLOption.action(name: String.localizedStringWithFormat("Subscribe in %@", client.name), action: action)
+                    let action = FOLAction.open(url: url)
+                    let option = FOLOption.action(name: String.localizedStringWithFormat("Subscribe in %@", client.name), action: action, icon: .applicationIcon(applicationPath: applicationPath, bundleIconName: client.name))
                     installedClientOptions.append(option)
                 case .cannotOpen:
                     break
@@ -40,8 +40,8 @@ struct FOLFeedReaderUtilities {
             result.append(.separator)
         }
         
-        result.append(FOLOption.action(name: String.localizedStringWithFormat("Copy Website Link"), action: .copy(string: feedProfile.websiteURL.absoluteString)))
-        result.append(FOLOption.action(name: String.localizedStringWithFormat("Copy Feed Link"), action: .copy(string: feedProfile.feedURL.absoluteString)))
+        result.append(FOLOption.action(name: String.localizedStringWithFormat("Copy Website Link"), action: .copy(string: feedProfile.websiteURL.absoluteString), icon: .copy))
+        result.append(FOLOption.action(name: String.localizedStringWithFormat("Copy Feed Link"), action: .copy(string: feedProfile.feedURL.absoluteString), icon: .copy))
         
         return result
     }
