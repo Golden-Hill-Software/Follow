@@ -33,6 +33,5 @@ extension NSImage {
         return img
     }
 
-    
 }
 #endif

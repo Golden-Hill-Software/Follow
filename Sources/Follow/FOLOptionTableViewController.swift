@@ -11,29 +11,10 @@ import SafariServices
 
 class FOLOptionTableViewController : UITableViewController {
     
-    let options: [FOLOption]
-    let optionIndexes: [[Int]]
+    let optionSections: [[FOLOption]]
     
     init( title: String, options: [FOLOption], needsCloseButton: Bool ) {
-        self.options = options
-        var optionIndexes = [[Int]]()
-        var sectionIndexes = [Int]()
-        for (i,option) in options.enumerated() {
-            switch option {
-            case .separator:
-                if !sectionIndexes.isEmpty {
-                    optionIndexes.append(sectionIndexes)
-                    sectionIndexes = [Int]()
-                }
-            case .action:
-                sectionIndexes.append(i)
-            }
-        }
-        if !sectionIndexes.isEmpty {
-            optionIndexes.append(sectionIndexes)
-            sectionIndexes = [Int]()
-        }
-        self.optionIndexes = optionIndexes
+        self.optionSections = options.FOL_divideIntoSections()
         super.init(style: .grouped)
         self.title = title
         if needsCloseButton {
@@ -51,29 +32,22 @@ class FOLOptionTableViewController : UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.optionIndexes.count
+        return self.optionSections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.optionIndexes[section].count
+        return self.optionSections[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")!
         var content = cell.defaultContentConfiguration()
         
-        let option = self.options[self.optionIndexes[indexPath.section][indexPath.row]]
+        let option = self.optionSections[indexPath.section][indexPath.row]
         switch option {
         case .action(let name, _, let icon):
             content.text = name
-            switch icon {
-            case .web:
-                content.image = getSymbol(named: "safari")
-            case .copy:
-                content.image = getSymbol(named: "doc.on.doc")
-            case .applicationIcon(_, let bundleIconName):
-                content.image = UIImage(named: bundleIconName, in: Bundle.module, with: nil)
-            }
+            content.image = icon.image
         case .separator:
             fatalError()
         }
@@ -83,7 +57,7 @@ class FOLOptionTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        let option = self.options[self.optionIndexes[indexPath.section][indexPath.row]]
+        let option = self.optionSections[indexPath.section][indexPath.row]
         switch option {
         case .action(_, let action, _):
             switch action {
