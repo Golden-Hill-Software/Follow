@@ -9,12 +9,17 @@
 
 import SwiftUI
 
-struct FOLFeedView : View {
+public struct FOLFeedView : View {
     
     let title: String
     let feedProfile: FOLFeedProfile
     
-    var body: some View {
+    public init( title: String, feedProfile: FOLFeedProfile ) {
+        self.title = title
+        self.feedProfile = feedProfile
+    }
+    
+    public var body: some View {
         let options = FOLFeedReaderUtilities.options(forFeedProfile: self.feedProfile)
         FOLOptionsView(title: self.title, options: options)
     }

@@ -9,12 +9,17 @@
 
 import SwiftUI
 
-struct FOLFediverseView : View {
+public struct FOLFediverseView : View {
     
     let title: String
     let fediverseProfile: FOLFediverseProfile
     
-    var body: some View {
+    public init( title: String, fediverseProfile: FOLFediverseProfile ) {
+        self.title = title
+        self.fediverseProfile = fediverseProfile
+    }
+    
+    public var body: some View {
         let options = FOLFediverseClientUtilities.options(forFediverseProfile: self.fediverseProfile)
         FOLOptionsView(title: self.title, options: options)
     }
