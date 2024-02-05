@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FOLAction : Equatable {
+public enum FOLAction : Equatable {
     
     case copy( string: String )
     

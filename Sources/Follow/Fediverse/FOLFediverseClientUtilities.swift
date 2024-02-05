@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FOLFediverseClientUtilities {
+public struct FOLFediverseClientUtilities {
     
     static let sortedFediverseClients: [FOLFediverseClient] = [
         FOLIceCubes(),
@@ -24,7 +24,7 @@ struct FOLFediverseClientUtilities {
         return String.localizedStringWithFormat("@%@@%@", fediverseProfile.username, fediverseProfile.host)
     }
     
-    static func options( forFediverseProfile fediverseProfile: FOLFediverseProfile ) -> [FOLOption] {
+    public static func options( forFediverseProfile fediverseProfile: FOLFediverseProfile ) -> [FOLOption] {
         var result = [FOLOption]()
         
         let webURL = webURL(forFediverseProfile: fediverseProfile)

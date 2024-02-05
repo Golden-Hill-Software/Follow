@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FOLOptionIcon {
+public enum FOLOptionIcon {
     
     case web
     case copy

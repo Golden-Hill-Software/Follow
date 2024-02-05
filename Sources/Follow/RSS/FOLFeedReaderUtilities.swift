@@ -16,7 +16,7 @@ public struct FOLFeedReaderUtilities {
         FOLUnread(),
     ]
     
-    static func options( forFeedProfile feedProfile: FOLFeedProfile ) -> [FOLOption] {
+    public static func options( forFeedProfile feedProfile: FOLFeedProfile ) -> [FOLOption] {
         var result = [FOLOption]()
         
         result.append(FOLOption.action(name: String.localizedStringWithFormat("View on Web"), action: .open(url: feedProfile.websiteURL), icon: .web))

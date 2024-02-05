@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FOLOption {
+public enum FOLOption {
     
     case action( name: String, action: FOLAction, icon: FOLOptionIcon )
     case separator
