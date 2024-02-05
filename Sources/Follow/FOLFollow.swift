@@ -5,10 +5,9 @@
 //  Created by John Brayton on 2/2/24.
 //
 
-import Foundation
 #if os(macOS)
+import Foundation
 import AppKit
-#endif
 
 @objc
 public class FOLFollow : NSObject {
@@ -16,7 +15,6 @@ public class FOLFollow : NSObject {
     public static var fediverseProfile: FOLFediverseProfile? = nil
     public static var feedProfile: FOLFeedProfile? = nil
 
-#if os(macOS)
     /*
         This does nothing, but its existence lets validateMenuItem(_:) get called (in FOLFollow+NSMenuItemValidation).
         That populates the submenu.
@@ -87,5 +85,5 @@ public class FOLFollow : NSObject {
         return menu
     }
     
-#endif
 }
+#endif

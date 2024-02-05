@@ -11,20 +11,12 @@ import SafariServices
 
 extension UIViewController {
     
-    public func FOL_handleFollowOnFediverse( title: String ) {
-        guard let fediverseProfile = FOLFollow.fediverseProfile else {
-            print("FOLFollow.fediverseProfile is not set.")
-            return
-        }
+    public func FOL_handleFollowOnFediverse( title: String, fediverseProfile: FOLFediverseProfile ) {
         let options = FOLFediverseClientUtilities.options(forFediverseProfile: fediverseProfile)
         self.present(title: title, options: options)
     }
     
-    public func FOL_handleBlog( title: String ) {
-        guard let feedProfile = FOLFollow.feedProfile else {
-            print("FOLFollow.feedProfile is not set.")
-            return
-        }
+    public func FOL_handleBlog( title: String, feedProfile: FOLFeedProfile ) {
         let options = FOLFeedReaderUtilities.options(forFeedProfile: feedProfile)
         self.present(title: title, options: options)
     }
