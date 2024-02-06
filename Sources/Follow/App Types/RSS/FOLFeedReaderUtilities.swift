@@ -9,7 +9,7 @@ import Foundation
 
 public struct FOLFeedReaderUtilities {
     
-    static let sortedFediverseClients: [FOLFeedReader] = [
+    public static let sortedFediverseClients: [FOLFeedReader] = [
         FOLFieryFeeds(),
         FOLNetNewsWire(),
         FOLReeder(),

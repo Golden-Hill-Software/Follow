@@ -9,7 +9,7 @@ import Foundation
 
 public struct FOLFediverseClientUtilities {
     
-    static let sortedFediverseClients: [FOLFediverseClient] = [
+    public static let sortedFediverseClients: [FOLFediverseClient] = [
         FOLIceCubes(),
         FOLIvory(),
         FOLMona(),
