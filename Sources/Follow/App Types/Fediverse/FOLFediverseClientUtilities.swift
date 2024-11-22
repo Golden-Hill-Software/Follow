@@ -10,14 +10,14 @@ import Foundation
 public struct FOLFediverseClientUtilities {
     
     public static let sortedFediverseClients: [FOLFediverseClient] = [
-        FOLIceCubes(),
+        //Removing this for now, it is not working correctly.
+        //FOLIceCubes(),
         FOLIvory(),
         FOLMona(),
     ]
     
     static func webURL( forFediverseProfile fediverseProfile: FOLFediverseProfile ) -> URL {
-        let string = String.localizedStringWithFormat("https://%@/@%@", fediverseProfile.host, fediverseProfile.username)
-        return URL(string: string)!
+        return fediverseProfile.url
     }
     
     static func handle( forFediverseProfile fediverseProfile: FOLFediverseProfile ) -> String {

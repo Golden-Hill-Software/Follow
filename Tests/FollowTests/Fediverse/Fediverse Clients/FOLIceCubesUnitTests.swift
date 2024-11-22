@@ -11,9 +11,9 @@ import XCTest
 final class FOLIceCubesUnitTests: XCTestCase {
 
     func testLocalURL() throws {
-        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "mastodon.goldenhillsoftware.com")
+        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "mastodon.goldenhillsoftware.com", url: URL(string: "https://social.goldenhillsoftware.com/@unread")!)
         let app = FOLIceCubes()
-        XCTAssertEqual(app.localURL(forFediverseProfile: fediverseProfile)?.absoluteString, "icecubesapp://mastodon.goldenhillsoftware.com/@unread")
+        XCTAssertEqual(app.localURL(forFediverseProfile: fediverseProfile)?.absoluteString, "icecubesapp://social.goldenhillsoftware.com/@unread")
     }
 
 }

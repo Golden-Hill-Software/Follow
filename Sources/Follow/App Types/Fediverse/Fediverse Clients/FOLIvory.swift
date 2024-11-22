@@ -14,7 +14,7 @@ struct FOLIvory : FOLFediverseClient {
     let appleAppId: Int = 6444602274
     
     func localURL(forFediverseProfile fediverseProfile: FOLFediverseProfile) -> URL? {
-        let string = String(format: "ivory://acct/openURL?url=https://%@/@%@", fediverseProfile.host, fediverseProfile.username)
+        let string = String(format: "ivory://acct/openURL?url=%@", fediverseProfile.url.absoluteString)
         return URL(string: string)
     }
     

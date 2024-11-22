@@ -11,9 +11,9 @@ import XCTest
 final class FOLMonaUnitTests: XCTestCase {
 
     func testLocalURL() throws {
-        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "mastodon.goldenhillsoftware.com")
+        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "goldenhillsoftware.com", url: URL(string: "https://social.goldenhillsoftware.com/@unread")!)
         let app = FOLMona()
-        XCTAssertEqual(app.localURL(forFediverseProfile: fediverseProfile)?.absoluteString, "mona://mastodon.goldenhillsoftware.com/@unread")
+        XCTAssertEqual(app.localURL(forFediverseProfile: fediverseProfile)?.absoluteString, "mona://goldenhillsoftware.com/@unread")
     }
 
 }

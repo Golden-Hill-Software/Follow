@@ -35,13 +35,13 @@ final class FOLFediverseClientUtilitiesUnitTests: XCTestCase {
     }
 
     func testWebURL() {
-        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "mastodon.goldenhillsoftware.com")
-        XCTAssertEqual(FOLFediverseClientUtilities.webURL(forFediverseProfile: fediverseProfile).absoluteString, "https://mastodon.goldenhillsoftware.com/@unread")
+        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "goldenhillsoftware.com", url: URL(string: "https://social.goldenhillsoftware.com/@unread")!)
+        XCTAssertEqual(FOLFediverseClientUtilities.webURL(forFediverseProfile: fediverseProfile).absoluteString, "https://social.goldenhillsoftware.com/@unread")
     }
     
     func testHandle() {
-        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "mastodon.goldenhillsoftware.com")
-        XCTAssertEqual(FOLFediverseClientUtilities.handle(forFediverseProfile: fediverseProfile), "@unread@mastodon.goldenhillsoftware.com")
+        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "goldenhillsoftware.com", url: URL(string: "https://social.goldenhillsoftware.com/@unread")!)
+        XCTAssertEqual(FOLFediverseClientUtilities.handle(forFediverseProfile: fediverseProfile), "@unread@goldenhillsoftware.com")
     }
     
 }

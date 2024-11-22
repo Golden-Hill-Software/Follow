@@ -11,9 +11,9 @@ import XCTest
 final class FOLIvoryUnitTests: XCTestCase {
 
     func testLocalURL() throws {
-        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "mastodon.goldenhillsoftware.com")
+        let fediverseProfile = FOLFediverseProfile(username: "unread", host: "goldenhillsoftware.com", url: URL(string: "https://social.goldenhillsoftware.com/@unread")!)
         let app = FOLIvory()
-        XCTAssertEqual(app.localURL(forFediverseProfile: fediverseProfile)?.absoluteString, "ivory://acct/openURL?url=https://mastodon.goldenhillsoftware.com/@unread")
+        XCTAssertEqual(app.localURL(forFediverseProfile: fediverseProfile)?.absoluteString, "ivory://acct/openURL?url=https://social.goldenhillsoftware.com/@unread")
     }
 
 }

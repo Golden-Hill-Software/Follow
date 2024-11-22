@@ -14,8 +14,11 @@ struct FOLIceCubes : FOLFediverseClient {
     let appleAppId = 6444915884
     
     func localURL(forFediverseProfile fediverseProfile: FOLFediverseProfile) -> URL? {
-        let string = String(format: "icecubesapp://%@/@%@", fediverseProfile.host, fediverseProfile.username)
-        return URL(string: string)
+        guard var urlComponents = URLComponents(url: fediverseProfile.url, resolvingAgainstBaseURL: false) else {
+            return nil
+        }
+        urlComponents.scheme = "icecubesapp"
+        return urlComponents.url
     }
     
 }
