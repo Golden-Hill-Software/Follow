@@ -67,6 +67,11 @@ public class FOLFollow : NSObject {
                             let dimensionSize = 16.0
                             let image = NSWorkspace.shared.icon(forFile: applicationPath).FOL_resized(to: NSSize(width: dimensionSize, height: dimensionSize))
                             menuItem.image = image
+                            if #available(macOS 27.0, *) {
+                                menuItem.preferredImageVisibility = .visible
+                            } else {
+                                // Fallback on earlier versions
+                            }
                         }
                     case .copy:
                         break
