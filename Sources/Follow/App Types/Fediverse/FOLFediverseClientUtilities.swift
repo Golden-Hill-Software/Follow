@@ -14,6 +14,7 @@ public struct FOLFediverseClientUtilities {
         //FOLIceCubes(),
         FOLIndigo(),
         FOLIvory(),
+        FOLMastodon(),
         FOLMona(),
     ]
     
