@@ -12,6 +12,7 @@ public struct FOLFediverseClientUtilities {
     public static let sortedFediverseClients: [FOLFediverseClient] = [
         //Removing this for now, it is not working correctly.
         //FOLIceCubes(),
+        FOLIndigo(),
         FOLIvory(),
         FOLMona(),
     ]
